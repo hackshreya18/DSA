@@ -1,2 +1,3 @@
-# Posting DSA Topic solutions.
-# All programs are done in C++ language.
+# Posting solutions for various DSA topics:
+All programs are written in C++ language.
+Many Topics are covered here.
