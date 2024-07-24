@@ -2,7 +2,7 @@
 using namespace std;
 
 bool checkPrime(int a){
-  if(a<2)return false;
+  if(a<=1)return false;
   for(int i=2;i*i<=a;i++){
     if(a%i==0)return false;
   }
@@ -20,6 +20,7 @@ int solve(vector<int> arr,int in){
   }
 
   return ans-mini;
+
 }
 int main(){
   int n=11;
