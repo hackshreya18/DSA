@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-bool checkPrime(int a){
+bool check(int a){
   if(a<=1)return false;
   for(int i=2;i*i<=a;i++){
     if(a%i==0)return false;
@@ -9,23 +9,60 @@ bool checkPrime(int a){
   return true;
 }
 
-int solve(vector<int> arr,int in){
-  int ans=0;
-  int mini=INT_MAX;
-  for(int i=0;i<in;i++){
-    if(checkPrime(arr[i])){
-      ans+=arr[i];
-      mini=min(mini,arr[i]);
-    }
+
+vector<string> solve(vector<int> arr){
+  vector<string> ans(arr.size(),"");
+
+  for(int i=0;i<arr.size();i++){
+     int t=arr[i];
+     string s=to_string(t);
+     string p = s;
+     if(s.length()==6){
+      ans[i]+='C';
+     }
+     else{
+      ans[i]+='W';
+     }
+
+     if(t==0)ans[i]+='Z';
+     else if(t==1)ans[i]+='O';
+     else{
+      if(check(t)){
+        ans[i]+='P';
+      }
+      else{
+        ans[i]+='N';
+      }
+     }
+
+     while(s.length()>1){
+         int sum=0;
+         for(int i=0;i<s.length();i++){
+          sum=sum+(s[i]-'0');
+         }
+
+         s=to_string(sum);
+     }
+
+     ans[i]+=s;
+
+     if(t%2==0){
+      ans[i]+=to_string(t/2);
+     }
+     else{
+      ans[i]+=to_string((t-1)/2);
+     }
   }
 
-  return ans-mini;
-
+  return ans;
 }
 int main(){
-  int n=11;
-  vector<int>arr={10,41,18,50,43,31,29,25,59,96,67};
+  int n=2;
+  vector<int>arr={123456,1234567};
 
-  cout<<solve(arr,n);
+  vector<string>a=solve(arr);
+  for(int i=0;i<a.size();i++){
+    cout<<a[i]<<" ";
+  }
 }
 
