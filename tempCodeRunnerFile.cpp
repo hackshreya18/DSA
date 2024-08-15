@@ -69,13 +69,11 @@ private:
     string getEndPart(const string& str) {
         int len = str.length();
         int partSize = len / 3;
-         if (len % 3 == 0) {
-        return str.substr(partSize * 2);
-    } else if (len % 3 == 1) {
-        return str.substr(partSize * 2+1 );
-    } else { 
-        return str.substr(partSize * 2 + 2);
-    }
+        if (len % 3 == 0 || len % 3 == 1) {
+            return str.substr(partSize * 2);
+        } else {
+            return str.substr(partSize * 2 + 1);
+        }
     }
 
     // Method to toggle the case of a string
